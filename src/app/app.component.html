@@ -7,13 +7,15 @@
     <table *ngIf="cardsTable" class="table">
         <thead class="thead-inverse">
         <tr>
-            <th *ngFor="let item of cardsTable.head">
+            <th *ngFor="let item of cardAttrs">
                 {{ item }}
+                <br>
+                <app-search-input (search)="search($event, item)"></app-search-input>
             </th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let card of cardsTable.data">
+        <tr *ngFor="let card of cardsData">
             <td *ngFor="let attr of cardAttrs">
                 {{ card[attr] | slice:0:20 }}
             </td>
