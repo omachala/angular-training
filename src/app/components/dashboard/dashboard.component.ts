@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {CounterService} from '../../services/counter.service';
+import {ICounter} from '../../interfaces/icounter';
 
 @Component({
     selector: 'app-dashboard',
@@ -9,14 +11,11 @@ export class DashboardComponent implements OnInit {
 
     counter = 1;
 
-    constructor() {
+    constructor(private counterService: CounterService) {
+        this.counterService.counterSubject.subscribe((data: ICounter) => this.counter += data.value);
     }
 
     ngOnInit() {
-    }
-
-    addToCounter(n: number) {
-        this.counter += n;
     }
 
 }

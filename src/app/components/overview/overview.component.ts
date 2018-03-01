@@ -1,4 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {CounterService} from '../../services/counter.service';
+import {ICounter} from '../../interfaces/icounter';
 
 @Component({
     selector: 'app-overview',
@@ -8,10 +10,10 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class OverviewComponent implements OnInit {
 
     @Input() title: string;
-    @Output() counterAdd: EventEmitter<number> = new EventEmitter();
+
     counter = 1;
 
-    constructor() {
+    constructor(private counterService: CounterService) {
     }
 
     ngOnInit() {
@@ -19,7 +21,11 @@ export class OverviewComponent implements OnInit {
 
     counterButtonClick() {
         this.counter++;
-        this.counterAdd.emit(1);
+        const data = <ICounter>{
+            value: 1,
+            sum: this.counter
+        };
+        this.counterService.counterSubject.next(data);
     }
 
 }
