@@ -1,0 +1,10 @@
+<div>
+  This is our first component!
+  <p>
+      <app-overview [title]="'one'" (counterAdd)="addToCounter($event)"></app-overview>
+      <app-overview [title]="'two'" (counterAdd)="addToCounter($event)"></app-overview>
+  </p>
+    <p>
+        Counters: {{ counter }}
+    </p>
+</div>
