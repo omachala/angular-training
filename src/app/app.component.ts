@@ -16,7 +16,7 @@ export class AppComponent {
 
     constructor(private spreadsheetService: SpreadsheetService) {
 
-        this.spreadsheetService.cardTableSubject.subscribe((cardTable: ICartTable) => {
+        this.spreadsheetService.cardTableSubject.subscribe((cardTable: ICardsTable) => {
             this.cardsTable = cardTable;
             this.loading = false;
         });
